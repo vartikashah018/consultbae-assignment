@@ -1,135 +1,1224 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Audio Submissions</title>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ConsultBae AI | Submissions</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
+        body {
+            min-height: 100vh;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            color: #f8fafc;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(99, 102, 241, .20),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(168, 85, 247, .18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(14, 165, 233, .12),
+                    transparent 35%
+                ),
+                #070b16;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, .08);
+
+            background:
+                rgba(7, 11, 22, .70);
+
+            backdrop-filter: blur(18px);
+
+            position: sticky;
+            top: 0;
+
+            z-index: 10;
+        }
+
+
+        .brand {
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+
+        .brand-icon {
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #a855f7
+                );
+
+            box-shadow:
+                0 0 25px
+                rgba(99, 102, 241, .35);
+        }
+
+
+        .brand span {
+            color: #a5b4fc;
+        }
+
+
+        .status {
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+
+        .status-dot {
+
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            box-shadow:
+                0 0 12px
+                rgba(34, 197, 94, .8);
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+
+            padding: 55px 0 30px;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .badge {
+
+            display: inline-flex;
+
+            padding: 7px 13px;
+
+            border-radius: 999px;
+
+            color: #c4b5fd;
+
+            background:
+                rgba(99, 102, 241, .12);
+
+            border:
+                1px solid
+                rgba(129, 140, 248, .25);
+
+            font-size: 12px;
+
+            margin-bottom: 14px;
+        }
+
+
         h1 {
+
+            font-size: clamp(32px, 5vw, 48px);
+
+            letter-spacing: -1.5px;
+
             margin-bottom: 10px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
+
+        .gradient-text {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #818cf8,
+                    #c084fc,
+                    #38bdf8
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
         }
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
+
+        .subtitle {
+
+            color: #64748b;
+
+            font-size: 15px;
+
+            line-height: 1.6;
         }
+
+
+        .new-btn {
+
+            text-decoration: none;
+
+            padding: 13px 18px;
+
+            border-radius: 12px;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            box-shadow:
+                0 10px 28px
+                rgba(99, 102, 241, .25);
+
+            transition: .2s;
+        }
+
+
+        .new-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(99, 102, 241, .35);
+        }
+
+
+        /* ================= STAT CARDS ================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+
+            padding: 22px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(15, 23, 42, .70);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .07);
+
+            backdrop-filter: blur(15px);
+        }
+
+
+        .stat-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+        }
+
+
+        .stat-label {
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .stat-icon {
+
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background:
+                rgba(99, 102, 241, .13);
+        }
+
+
+        .stat-value {
+
+            font-size: 30px;
+
+            font-weight: 700;
+        }
+
+
+        .stat-description {
+
+            margin-top: 4px;
+
+            color: #475569;
+
+            font-size: 12px;
+        }
+
+
+        /* ================= TABLE CARD ================= */
+
+        .table-card {
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background:
+                rgba(15, 23, 42, .72);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .08);
+
+            backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, .25);
+
+            margin-bottom: 60px;
+        }
+
+
+        .table-header {
+
+            padding: 22px 25px;
+
+            border-bottom:
+                1px solid
+                rgba(255, 255, 255, .06);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .table-title {
+
+            font-size: 16px;
+
+            font-weight: 650;
+        }
+
+
+        .table-subtitle {
+
+            color: #475569;
+
+            font-size: 12px;
+
+            margin-top: 4px;
+        }
+
+
+        .live {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #86efac;
+
+            font-size: 12px;
+        }
+
+
+        .live-dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            box-shadow:
+                0 0 10px
+                rgba(34, 197, 94, .7);
+        }
+
+
+        /* ================= TABLE ================= */
+
+        .table-wrapper {
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 950px;
+        }
+
 
         th {
-            background: #f4f4f4;
+
+            padding: 14px 18px;
+
+            text-align: left;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .8px;
+
+            font-weight: 600;
+
+            background:
+                rgba(2, 6, 23, .25);
         }
+
+
+        td {
+
+            padding: 17px 18px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, .05);
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+        }
+
+
+        tr {
+
+            transition: .18s;
+        }
+
+
+        tbody tr:hover {
+
+            background:
+                rgba(99, 102, 241, .045);
+        }
+
+
+        /* ================= PERSON ================= */
+
+        .person {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+        }
+
+
+        .avatar {
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #c4b5fd;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(99, 102, 241, .25),
+                    rgba(168, 85, 247, .25)
+                );
+        }
+
+
+        .person-name {
+
+            font-weight: 600;
+
+            color: #f1f5f9;
+        }
+
+
+        .phone {
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+
+        /* ================= AUDIO ================= */
 
         audio {
-            width: 200px;
+
+            width: 210px;
+
+            height: 36px;
         }
 
+
+        .file-name {
+
+            color: #94a3b8;
+
+            font-size: 11px;
+
+            margin-top: 5px;
+
+            max-width: 210px;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+        }
+
+
+        /* ================= METADATA ================= */
+
+        .metric {
+
+            color: #cbd5e1;
+
+            font-weight: 500;
+        }
+
+
+        .metric-label {
+
+            color: #475569;
+
+            font-size: 10px;
+
+            margin-top: 3px;
+        }
+
+
+        /* ================= QUALITY ================= */
+
+        .quality {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 7px 10px;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            background:
+                rgba(34, 197, 94, .10);
+
+            color: #86efac;
+
+            border:
+                1px solid
+                rgba(34, 197, 94, .15);
+        }
+
+
+        .quality-dot {
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+        }
+
+
+        /* ================= EMPTY ================= */
+
         .empty {
-            padding: 30px;
+
+            padding: 80px 30px;
+
             text-align: center;
         }
 
-        a {
-            display: inline-block;
-            margin-bottom: 20px;
+
+        .empty-icon {
+
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            font-size: 30px;
+
+            background:
+                rgba(99, 102, 241, .10);
         }
+
+
+        .empty h2 {
+
+            margin-bottom: 8px;
+        }
+
+
+        .empty p {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            padding: 25px;
+
+            text-align: center;
+
+            color: #475569;
+
+            font-size: 11px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, .05);
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 750px) {
+
+            .page-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .navbar {
+
+                padding: 0 4%;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <h1>Audio Submissions</h1>
 
-    <a href="/">
-        ← Submit another recording
-    </a>
+<!-- NAVBAR -->
 
-    {% if submissions %}
+<nav class="navbar">
 
-    <table>
+    <div class="brand">
 
-        <thead>
-            <tr>
-                <th>Person</th>
-                <th>Phone</th>
-                <th>Audio</th>
-                <th>Duration</th>
-                <th>Sample Rate</th>
-                <th>Bitrate</th>
-                <th>Loudness</th>
-                <th>Quality</th>
-            </tr>
-        </thead>
+        <div class="brand-icon">
+            ✦
+        </div>
 
-        <tbody>
+        ConsultBae <span>AI</span>
 
-            {% for submission in submissions %}
-
-            <tr>
-
-                <td>
-                    {{ submission["canonical_name"] }}
-                </td>
-
-                <td>
-                    {{ submission["phone"] }}
-                </td>
-
-                <td>
-                    <audio controls>
-                        <source
-                            src="{{ url_for('serve_audio', submission_id=submission['id']) }}"
-                        >
-                    </audio>
-                </td>
-
-                <td>
-                    {{ "%.2f"|format(submission["duration_seconds"]) }} sec
-                </td>
-
-                <td>
-                    {{ submission["sample_rate_hz"] }} Hz
-                </td>
-
-                <td>
-                    {{ submission["bitrate_bps"] }} bps
-                </td>
-
-                <td>
-                    {{ submission["loudness_db"] }} dB
-                </td>
-
-                <td>
-                    {{ submission["noise_estimate"] }}
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-
-    </table>
-
-    {% else %}
-
-    <div class="empty">
-        No audio submissions yet.
     </div>
 
-    {% endif %}
+
+    <div class="status">
+
+        <div class="status-dot"></div>
+
+        Automation Online
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <div>
+
+            <div class="badge">
+                📊 AI Data Monitor
+            </div>
+
+            <h1>
+                Audio
+                <span class="gradient-text">
+                    Submissions
+                </span>
+            </h1>
+
+            <p class="subtitle">
+                Monitor processed recordings, audio quality
+                and automated metadata extraction.
+            </p>
+
+        </div>
+
+
+        <a
+            class="new-btn"
+            href="/"
+        >
+            + New Recording
+        </a>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-label">
+                    Total Submissions
+                </div>
+
+                <div class="stat-icon">
+                    🎙
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                {{ submissions|length }}
+            </div>
+
+            <div class="stat-description">
+                Processed recordings
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-label">
+                    AI Processing
+                </div>
+
+                <div class="stat-icon">
+                    ⚡
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                {{ submissions|length }}
+            </div>
+
+            <div class="stat-description">
+                Successfully analyzed
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-label">
+                    System Status
+                </div>
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+            </div>
+
+            <div class="stat-value">
+                100%
+            </div>
+
+            <div class="stat-description">
+                Pipeline operational
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUBMISSIONS -->
+
+    <section class="table-card">
+
+
+        <div class="table-header">
+
+            <div>
+
+                <div class="table-title">
+                    Processed Recordings
+                </div>
+
+                <div class="table-subtitle">
+                    Audio metadata extracted automatically
+                </div>
+
+            </div>
+
+
+            <div class="live">
+
+                <div class="live-dot"></div>
+
+                LIVE
+
+            </div>
+
+        </div>
+
+
+        {% if submissions %}
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Applicant
+                        </th>
+
+                        <th>
+                            Recording
+                        </th>
+
+                        <th>
+                            Duration
+                        </th>
+
+                        <th>
+                            Sample Rate
+                        </th>
+
+                        <th>
+                            Bitrate
+                        </th>
+
+                        <th>
+                            Loudness
+                        </th>
+
+                        <th>
+                            AI Quality
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for submission in submissions %}
+
+                    <tr>
+
+
+                        <!-- PERSON -->
+
+                        <td>
+
+                            <div class="person">
+
+                                <div class="avatar">
+
+                                    {{
+                                        submission["canonical_name"]
+                                        [0:1]
+                                        |upper
+                                    }}
+
+                                </div>
+
+
+                                <div>
+
+                                    <div class="person-name">
+
+                                        {{
+                                            submission["canonical_name"]
+                                        }}
+
+                                    </div>
+
+
+                                    <div class="phone">
+
+                                        {{
+                                            submission["phone"]
+                                        }}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- AUDIO -->
+
+                        <td>
+
+                            <audio controls>
+
+                                <source
+                                    src="{{
+                                        url_for(
+                                            'serve_audio',
+                                            submission_id=submission['id']
+                                        )
+                                    }}"
+                                >
+
+                            </audio>
+
+
+                            <div class="file-name">
+
+                                {{
+                                    submission["file_name"]
+                                }}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- DURATION -->
+
+                        <td>
+
+                            <div class="metric">
+
+                                {{
+                                    "%.2f"
+                                    |format(
+                                        submission["duration_seconds"]
+                                    )
+                                }}
+                                sec
+
+                            </div>
+
+                            <div class="metric-label">
+                                Duration
+                            </div>
+
+                        </td>
+
+
+                        <!-- SAMPLE RATE -->
+
+                        <td>
+
+                            <div class="metric">
+
+                                {{
+                                    submission["sample_rate_hz"]
+                                }}
+                                Hz
+
+                            </div>
+
+                            <div class="metric-label">
+                                Sample rate
+                            </div>
+
+                        </td>
+
+
+                        <!-- BITRATE -->
+
+                        <td>
+
+                            <div class="metric">
+
+                                {{
+                                    submission["bitrate_bps"]
+                                }}
+                                bps
+
+                            </div>
+
+                            <div class="metric-label">
+                                Bitrate
+                            </div>
+
+                        </td>
+
+
+                        <!-- LOUDNESS -->
+
+                        <td>
+
+                            <div class="metric">
+
+                                {{
+                                    submission["loudness_db"]
+                                }}
+                                dB
+
+                            </div>
+
+                            <div class="metric-label">
+                                Loudness
+                            </div>
+
+                        </td>
+
+
+                        <!-- QUALITY -->
+
+                        <td>
+
+                            <span class="quality">
+
+                                <span class="quality-dot"></span>
+
+                                {{
+                                    submission["noise_estimate"]
+                                }}
+
+                            </span>
+
+                        </td>
+
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                🎙️
+            </div>
+
+            <h2>
+                No recordings yet
+            </h2>
+
+            <p>
+                Upload your first audio recording to start
+                the AI processing pipeline.
+            </p>
+
+            <a
+                class="new-btn"
+                href="/"
+            >
+                Upload Recording
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+</div>
+
+
+<footer>
+
+    ConsultBae AI • Intelligent Data Automation
+
+</footer>
+
 
 </body>
+
 </html>
