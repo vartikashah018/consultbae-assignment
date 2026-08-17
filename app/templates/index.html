@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConsultBae Audio Collection</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        form {
+            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>ConsultBae Audio Collection</h1>
+
+    <p>
+        Enter your details and upload an audio recording.
+    </p>
+
+    <form
+        action="/submit"
+        method="POST"
+        enctype="multipart/form-data"
+        novalidate
+    >
+
+        <label for="name">Name</label>
+
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+        >
+
+        <label for="phone">Phone Number</label>
+
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+        >
+
+        <label for="audio">Audio File</label>
+
+        <input
+            type="file"
+            id="audio"
+            name="audio"
+            accept="audio/*"
+        >
+
+        <button type="submit">
+            Submit Recording
+        </button>
+
+    </form>
+
+    <a href="/submissions">
+        View all submissions
+    </a>
+
+</body>
+</html>

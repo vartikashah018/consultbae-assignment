@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Submissions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        audio {
+            width: 200px;
+        }
+
+        .empty {
+            padding: 30px;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Audio Submissions</h1>
+
+    <a href="/">
+        ← Submit another recording
+    </a>
+
+    {% if submissions %}
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Person</th>
+                <th>Phone</th>
+                <th>Audio</th>
+                <th>Duration</th>
+                <th>Sample Rate</th>
+                <th>Bitrate</th>
+                <th>Loudness</th>
+                <th>Quality</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for submission in submissions %}
+
+            <tr>
+
+                <td>
+                    {{ submission["canonical_name"] }}
+                </td>
+
+                <td>
+                    {{ submission["phone"] }}
+                </td>
+
+                <td>
+                    <audio controls>
+                        <source
+                            src="{{ url_for('serve_audio', submission_id=submission['id']) }}"
+                        >
+                    </audio>
+                </td>
+
+                <td>
+                    {{ "%.2f"|format(submission["duration_seconds"]) }} sec
+                </td>
+
+                <td>
+                    {{ submission["sample_rate_hz"] }} Hz
+                </td>
+
+                <td>
+                    {{ submission["bitrate_bps"] }} bps
+                </td>
+
+                <td>
+                    {{ submission["loudness_db"] }} dB
+                </td>
+
+                <td>
+                    {{ submission["noise_estimate"] }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <div class="empty">
+        No audio submissions yet.
+    </div>
+
+    {% endif %}
+
+</body>
+</html>
